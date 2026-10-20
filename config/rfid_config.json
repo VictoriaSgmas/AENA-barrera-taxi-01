@@ -1,0 +1,6 @@
+{
+  "modo": "serial",
+  "puerto_serie": "COM4",
+  "baudios": 9600,
+  "timeout_seg": 1
+}

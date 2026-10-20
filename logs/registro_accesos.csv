@@ -1,0 +1,106 @@
+timestamp,origen,valor_leido,autorizado,accion
+2026-09-14T11:40:32,LPR,1234BCD,True,"ABIERTO (simulado, barrera aun no conectada)"
+2026-09-14T11:46:53,LPR,2012NLE,True,"ABIERTO (simulado, barrera aun no conectada)"
+2026-09-14T11:47:13,LPR,9421GMT,False,DENEGADO
+2026-09-14T11:47:25,LPR,5649JSN,False,DENEGADO
+2026-09-14T11:47:29,LPR,5649JSN,False,DENEGADO
+2026-09-14T11:47:39,LPR,2012NLE,True,"ABIERTO (simulado, barrera aun no conectada)"
+2026-09-14T11:47:43,LPR,2012NLE,True,"ABIERTO (simulado, barrera aun no conectada)"
+2026-09-14T11:47:47,LPR,2012NLE,True,"ABIERTO (simulado, barrera aun no conectada)"
+2026-09-14T12:37:14,LPR,5649JSN,False,DENEGADO
+2026-09-14T12:37:56,LPR,9421,False,DENEGADO
+2026-09-14T12:40:14,LPR,2012NL,False,DENEGADO
+2026-09-14T12:43:50,LPR,2012NLE,True,"ABIERTO (simulado, barrera aun no conectada)"
+2026-09-14T12:43:54,LPR,2012NLE,True,"ABIERTO (simulado, barrera aun no conectada)"
+2026-09-14T12:43:59,LPR,9421G,False,DENEGADO
+2026-09-14T12:44:08,LPR,O421,False,DENEGADO
+2026-09-14T12:44:18,LPR,5649JSN,False,DENEGADO
+2026-09-14T12:44:25,LPR,9421GMT,False,DENEGADO
+2026-09-14T12:44:30,LPR,5649JSN,False,DENEGADO
+2026-09-14T12:44:37,LPR,2012NLE,True,"ABIERTO (simulado, barrera aun no conectada)"
+2026-09-14T14:46:55,RFID,TESTRFID02,False,DENEGADO
+2026-09-14T14:48:10,LPR,37NZ10Z,False,DENEGADO
+2026-09-14T14:48:21,LPR,2012NLE,False,DENEGADO
+2026-09-14T14:50:01,LPR,2012NLE,False,DENEGADO
+2026-09-14T14:51:10,LPR,2012NLE,True,"ABIERTO (simulado, barrera aun no conectada)"
+2026-09-14T15:06:09,LPR,5649JSN,False,DENEGADO
+2026-09-14T15:06:25,RFID,E28068940000501A4A926580,False,DENEGADO
+2026-09-14T15:25:30,LPR,2567KBZ,False,DENEGADO
+2026-09-14T15:30:03,LPR,2567KBZ,False,DENEGADO
+2026-09-14T15:30:21,RFID,E28068940000401A4A926555,False,DENEGADO
+2026-09-14T15:39:11,RFID,E28068940000401A4A967C88,False,DENEGADO
+2026-09-15T09:23:18,LPR,TESTOK1,True,"ABIERTO (simulado, barrera aun no conectada)"
+2026-09-15T09:23:19,RFID,TESTRFID000001,True,"ABIERTO (simulado, barrera aun no conectada)"
+2026-09-15T09:23:19,RFID,NOEXISTE999,False,DENEGADO
+2026-09-15T09:24:32,RFID,TESTRFID000001,True,ABIERTO (pulso enviado al rele DT-R002)
+2026-09-15T09:39:21,LPR,2567KBZ,False,DENEGADO
+2026-09-15T10:30:07,LPR,1726NBD,True,ABIERTO (pulso enviado al rele DT-R002)
+2026-09-15T10:31:15,RFID,E28068940000501AEFF4AD27,True,ABIERTO (pulso enviado al rele DT-R002)
+2026-09-15T09:43:18,RFID,E28068940000501AEFF4AD27,True,ABIERTO (pulso enviado al rele DT-R002),&0&1&0&1&10&
+2026-09-15T09:43:18,RFID,E28068940000501AEFF4AD27,True,ABIERTO (pulso enviado al rele DT-R002),&0&1&0&1&10&
+2026-09-15T09:43:19,RFID,E28068940000501AEFF4AD27,True,ABIERTO (pulso enviado al rele DT-R002),&0&1&0&1&10&
+2026-09-15T09:43:37,LPR,1726NBD,True,ABIERTO (pulso enviado al rele DT-R002),&0&1&0&1&10&
+2026-09-15T09:45:25,LPR,1726NBD,True,ABIERTO (pulso enviado al rele DT-R002),&0&1&0&1&10&
+2026-09-15T09:50:32,RFID,e28068940000501b3d27b4cd,True,ABIERTO (pulso enviado al rele DT-R002),&0&1&0&1&10&
+2026-09-15T09:50:35,RFID,e28068940000501b3d27b4c,False,DENEGADO,
+2026-09-15T10:11:08,RFID,E28068940000401B3D277D28,True,ABIERTO (pulso enviado al rele DT-R002),&0&1&0&1&10&
+2026-09-15T10:11:20,RFID,E28068940000401B3D277CF8,False,DENEGADO,
+2026-09-21T11:56:44,RFID,0442686966,False,DENEGADO,
+2026-09-21T11:56:44,RFID,0442686967,False,DENEGADO,
+2026-09-21T11:57:43,RFID,0442686956,False,DENEGADO,
+2026-09-21T12:04:10,RFID,1A62DDF6,False,DENEGADO,
+2026-09-21T12:04:18,RFID,1A62DDF7,False,DENEGADO,
+2026-09-21T12:04:23,RFID,1A62DDEC,False,DENEGADO,
+2026-09-21T12:04:29,RFID,4A38AC8A,False,DENEGADO,
+2026-09-21T12:20:03,RFID,1A62DDF6,False,DENEGADO,
+2026-09-21T12:20:10,RFID,1A62DDF7,False,DENEGADO,
+2026-09-21T12:20:15,RFID,1A62DE01,False,DENEGADO,
+2026-09-21T12:34:06,RFID,1A62DDF6,False,DENEGADO,
+2026-09-21T12:34:06,RFID,4A38AC8A,False,DENEGADO,
+2026-09-21T12:34:14,RFID,1A62DDEC,False,DENEGADO,
+2026-09-21T12:37:05,RFID,E28068940000401C1A62DDF6,False,DENEGADO,
+2026-09-21T12:37:08,RFID,E28068940000501C1A62DE01,False,DENEGADO,
+2026-09-22T08:05:14,RFID,E28068940000501C1A62DDEC,False,DENEGADO,
+2026-09-22T08:05:20,RFID,E2806894000050314A38AC8A,False,DENEGADO,
+2026-09-22T08:05:25,RFID,E28068940000501C1A62DDF7,False,DENEGADO,
+2026-09-22T08:05:29,RFID,E28068940000501C1A62DE01,False,DENEGADO,
+2026-09-22T08:05:33,RFID,E28068940000401C1A62DDF6,False,DENEGADO,
+2026-09-22T08:09:45,RFID,E2806894000050314A38AC8A,False,DENEGADO,
+2026-09-22T08:09:55,RFID,E28068940000501C1A62DDEC,True,ABIERTO (pulso enviado al rele DT-R002),"ERROR: HTTPConnectionPool(host='192.168.10.10', port=80): Max retries exceeded with url: /relay_cgi.cgi?type=1&relay=0&on=1&time=10&pwd=5597& (Caused by ConnectTimeoutError(<HTTPConnection(host='192.168.10.10', port=80) at 0x20632be12b0>, 'Connection to 192.168.10.10 timed out. (connect timeout=5)'))"
+2026-09-22T08:10:04,RFID,E28068940000501C1A62DDF7,True,ABIERTO (pulso enviado al rele DT-R002),"ERROR: HTTPConnectionPool(host='192.168.10.10', port=80): Max retries exceeded with url: /relay_cgi.cgi?type=1&relay=0&on=1&time=10&pwd=5597& (Caused by ConnectTimeoutError(<HTTPConnection(host='192.168.10.10', port=80) at 0x20632b0f9d0>, 'Connection to 192.168.10.10 timed out. (connect timeout=5)'))"
+2026-09-22T08:10:05,RFID,E28068940000501C1A62DE01,False,DENEGADO,
+2026-09-24T12:59:31,RFID,LECTURA_RFID_INVALIDA:E28068940000501C1A62DE01,False,DENEGADO,
+2026-09-24T13:00:08,RFID,LECTURA_RFID_INVALIDA:E28068940000501C1A62DDEC,False,DENEGADO,
+2026-09-24T13:00:11,RFID,LECTURA_RFID_INVALIDA:E28068940000401C1A62DDF6,False,DENEGADO,
+2026-09-24T13:00:23,RFID,LECTURA_RFID_INVALIDA:28068940000501C1A62DDF7,False,DENEGADO,
+2026-09-24T13:00:34,RFID,LECTURA_RFID_INVALIDA:E28068940000501C1A62DDF7,False,DENEGADO,
+2026-09-24T13:01:51,RFID,LECTURA_RFID_INVALIDA:E28068940000501C1A62DE01,False,DENEGADO,
+2026-09-24T13:02:07,RFID,LECTURA_RFID_INVALIDA:E28068940000501C1A62DDF7,False,DENEGADO,
+2026-09-24T13:02:10,RFID,LECTURA_RFID_INVALIDA:E28068940000501C1A62DDEC,False,DENEGADO,
+2026-09-24T13:02:13,RFID,LECTURA_RFID_INVALIDA:E2806894000050314A38AC8A,False,DENEGADO,
+2026-09-24T13:02:15,RFID,LECTURA_RFID_INVALIDA:E28068940000401C1A62DDF6,False,DENEGADO,
+2026-09-24T13:03:04,RFID,LECTURA_RFID_INVALIDA:E28068940000401C1A62DDF6,False,DENEGADO,
+2026-09-24T13:03:07,RFID,LECTURA_RFID_INVALIDA:E2806894000050314A38AC8A,False,DENEGADO,
+2026-09-24T13:03:09,RFID,LECTURA_RFID_INVALIDA:E28068940000501C1A62DDEC,False,DENEGADO,
+2026-09-24T13:03:12,RFID,LECTURA_RFID_INVALIDA:E28068940000501C1A62DDF7,False,DENEGADO,
+2026-09-24T13:03:13,RFID,LECTURA_RFID_INVALIDA:E28068940000501C1A62DE01,False,DENEGADO,
+2026-09-24T13:20:55,RFID,E28068940000501C1A62DDF7,True,ABIERTO (pulso enviado al rele DT-R002),"ERROR: HTTPConnectionPool(host='192.168.10.10', port=80): Max retries exceeded with url: /relay_cgi.cgi?type=1&relay=0&on=1&time=10&pwd=5597& (Caused by ConnectTimeoutError(<HTTPConnection(host='192.168.10.10', port=80) at 0x1dfcb7a12b0>, 'Connection to 192.168.10.10 timed out. (connect timeout=5)'))"
+2026-09-24T13:21:00,RFID,1A62DDF6,True,ABIERTO (pulso enviado al rele DT-R002),"ERROR: HTTPConnectionPool(host='192.168.10.10', port=80): Max retries exceeded with url: /relay_cgi.cgi?type=1&relay=0&on=1&time=10&pwd=5597& (Caused by ConnectTimeoutError(<HTTPConnection(host='192.168.10.10', port=80) at 0x1dfcb6d3890>, 'Connection to 192.168.10.10 timed out. (connect timeout=5)'))"
+2026-09-24T13:21:05,RFID,1A62DDEC,True,ABIERTO (pulso enviado al rele DT-R002),"ERROR: HTTPConnectionPool(host='192.168.10.10', port=80): Max retries exceeded with url: /relay_cgi.cgi?type=1&relay=0&on=1&time=10&pwd=5597& (Caused by ConnectTimeoutError(<HTTPConnection(host='192.168.10.10', port=80) at 0x1dfcb7f8050>, 'Connection to 192.168.10.10 timed out. (connect timeout=5)'))"
+2026-09-24T13:21:20,RFID,4A38AC8A,True,ABIERTO (pulso enviado al rele DT-R002),"ERROR: HTTPConnectionPool(host='192.168.10.10', port=80): Max retries exceeded with url: /relay_cgi.cgi?type=1&relay=0&on=1&time=10&pwd=5597& (Caused by ConnectTimeoutError(<HTTPConnection(host='192.168.10.10', port=80) at 0x1dfcb7a96d0>, 'Connection to 192.168.10.10 timed out. (connect timeout=5)'))"
+2026-09-24T13:21:30,RFID,E28068940000501C1A62DE01,True,ABIERTO (pulso enviado al rele DT-R002),"ERROR: HTTPConnectionPool(host='192.168.10.10', port=80): Max retries exceeded with url: /relay_cgi.cgi?type=1&relay=0&on=1&time=10&pwd=5597& (Caused by ConnectTimeoutError(<HTTPConnection(host='192.168.10.10', port=80) at 0x1dfcb815260>, 'Connection to 192.168.10.10 timed out. (connect timeout=5)'))"
+2026-09-24T15:34:01,RFID,1A62DDF6,True,ABIERTO (pulso enviado al rele DT-R002),"ERROR: HTTPConnectionPool(host='192.168.10.10', port=80): Max retries exceeded with url: /relay_cgi.cgi?type=1&relay=0&on=1&time=10&pwd=5597& (Caused by ConnectTimeoutError(<HTTPConnection(host='192.168.10.10', port=80) at 0x217f99c12b0>, 'Connection to 192.168.10.10 timed out. (connect timeout=5)'))"
+2026-09-24T15:34:22,RFID,E28068940000501C1A62DE01,True,ABIERTO (pulso enviado al rele DT-R002),"ERROR: HTTPConnectionPool(host='192.168.10.10', port=80): Max retries exceeded with url: /relay_cgi.cgi?type=1&relay=0&on=1&time=10&pwd=5597& (Caused by ConnectTimeoutError(<HTTPConnection(host='192.168.10.10', port=80) at 0x217f9a24640>, 'Connection to 192.168.10.10 timed out. (connect timeout=5)'))"
+2026-09-29T09:14:02,RFID,4A38AC8A,True,ABIERTO (pulso enviado al rele DT-R002),"ERROR: HTTPConnectionPool(host='192.168.10.10', port=80): Max retries exceeded with url: /relay_cgi.cgi?type=1&relay=0&on=1&time=10&pwd=5597& (Caused by ConnectTimeoutError(<HTTPConnection(host='192.168.10.10', port=80) at 0x14e36e9d160>, 'Connection to 192.168.10.10 timed out. (connect timeout=5)'))"
+2026-09-29T09:14:07,RFID,E28068940000501C1A62DDF7,True,ABIERTO (pulso enviado al rele DT-R002),"ERROR: HTTPConnectionPool(host='192.168.10.10', port=80): Max retries exceeded with url: /relay_cgi.cgi?type=1&relay=0&on=1&time=10&pwd=5597& (Caused by ConnectTimeoutError(<HTTPConnection(host='192.168.10.10', port=80) at 0x14e36db39d0>, 'Connection to 192.168.10.10 timed out. (connect timeout=5)'))"
+2026-09-29T09:14:12,RFID,1A62DDEC,True,ABIERTO (pulso enviado al rele DT-R002),"ERROR: HTTPConnectionPool(host='192.168.10.10', port=80): Max retries exceeded with url: /relay_cgi.cgi?type=1&relay=0&on=1&time=10&pwd=5597& (Caused by ConnectTimeoutError(<HTTPConnection(host='192.168.10.10', port=80) at 0x14e36edc190>, 'Connection to 192.168.10.10 timed out. (connect timeout=5)'))"
+2026-09-29T09:14:17,RFID,E28068940000401C1A6880B0,True,ABIERTO (pulso enviado al rele DT-R002),"ERROR: HTTPConnectionPool(host='192.168.10.10', port=80): Max retries exceeded with url: /relay_cgi.cgi?type=1&relay=0&on=1&time=10&pwd=5597& (Caused by ConnectTimeoutError(<HTTPConnection(host='192.168.10.10', port=80) at 0x14e36e3fe10>, 'Connection to 192.168.10.10 timed out. (connect timeout=5)'))"
+2026-09-29T09:14:22,RFID,E28068940000501C1A6880A5,True,ABIERTO (pulso enviado al rele DT-R002),"ERROR: HTTPConnectionPool(host='192.168.10.10', port=80): Max retries exceeded with url: /relay_cgi.cgi?type=1&relay=0&on=1&time=10&pwd=5597& (Caused by ConnectTimeoutError(<HTTPConnection(host='192.168.10.10', port=80) at 0x14e36ee0640>, 'Connection to 192.168.10.10 timed out. (connect timeout=5)'))"
+2026-09-29T09:14:27,RFID,E28068940000501C1A6880AF,True,ABIERTO (pulso enviado al rele DT-R002),"ERROR: HTTPConnectionPool(host='192.168.10.10', port=80): Max retries exceeded with url: /relay_cgi.cgi?type=1&relay=0&on=1&time=10&pwd=5597& (Caused by ConnectTimeoutError(<HTTPConnection(host='192.168.10.10', port=80) at 0x14e36e857f0>, 'Connection to 192.168.10.10 timed out. (connect timeout=5)'))"
+2026-09-29T09:14:32,RFID,E28068940000501C1A68809A,True,ABIERTO (pulso enviado al rele DT-R002),"ERROR: HTTPConnectionPool(host='192.168.10.10', port=80): Max retries exceeded with url: /relay_cgi.cgi?type=1&relay=0&on=1&time=10&pwd=5597& (Caused by ConnectTimeoutError(<HTTPConnection(host='192.168.10.10', port=80) at 0x14e36ef06b0>, 'Connection to 192.168.10.10 timed out. (connect timeout=5)'))"
+2026-09-29T09:15:03,RFID,E28068940000401C1A688496,True,ABIERTO (pulso enviado al rele DT-R002),"ERROR: HTTPConnectionPool(host='192.168.10.10', port=80): Max retries exceeded with url: /relay_cgi.cgi?type=1&relay=0&on=1&time=10&pwd=5597& (Caused by ConnectTimeoutError(<HTTPConnection(host='192.168.10.10', port=80) at 0x14e36ef2580>, 'Connection to 192.168.10.10 timed out. (connect timeout=5)'))"
+2026-09-29T09:15:17,RFID,E28068940000501C1A6884A1,True,ABIERTO (pulso enviado al rele DT-R002),"ERROR: HTTPConnectionPool(host='192.168.10.10', port=80): Max retries exceeded with url: /relay_cgi.cgi?type=1&relay=0&on=1&time=10&pwd=5597& (Caused by ConnectTimeoutError(<HTTPConnection(host='192.168.10.10', port=80) at 0x14e36ef2be0>, 'Connection to 192.168.10.10 timed out. (connect timeout=5)'))"
+2026-09-29T09:15:38,RFID,E28068940000501C1A688497,True,ABIERTO (pulso enviado al rele DT-R002),"ERROR: HTTPConnectionPool(host='192.168.10.10', port=80): Max retries exceeded with url: /relay_cgi.cgi?type=1&relay=0&on=1&time=10&pwd=5597& (Caused by ConnectTimeoutError(<HTTPConnection(host='192.168.10.10', port=80) at 0x14e36e63ac0>, 'Connection to 192.168.10.10 timed out. (connect timeout=5)'))"
+2026-10-01T09:07:21,RFID,E2806894000040314A38B9C2,True,ABIERTO (pulso enviado al rele DT-R002),&0&1&0&1&10&
+2026-10-01T09:08:03,RFID,E2806894000040314A38A9F5,True,ABIERTO (pulso enviado al rele DT-R002),&0&1&0&1&10&
+2026-10-01T09:08:31,RFID,E2806894000040314A38B9C1,True,ABIERTO (pulso enviado al rele DT-R002),&0&1&0&1&10&

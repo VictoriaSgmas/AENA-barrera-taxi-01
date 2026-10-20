@@ -1,0 +1,89 @@
+// Politica de Tailscale (grants) para SGbarrera.
+// Pegar en: https://login.tailscale.com/admin/acls/file  (reemplaza la politica por defecto "todo permitido").
+// Formato HuJSON: admite comentarios y comas finales.
+//
+// ANTES DE PEGAR: cambia victoria@sgmas.es por el email con el que inicias sesion
+// en Tailscale, y TU_USUARIO_UBUNTU por el usuario Linux del miniPC.
+{
+	// Quien administra la barrera. Solo estos usuarios (y sus dispositivos) tienen acceso.
+	"groups": {
+		"group:admin-barrera": ["victoria@sgmas.es"],
+	},
+
+	// El miniPC llevara este tag. Un dispositivo con tag no caduca la clave
+	// y NO hereda los permisos de ningun usuario: solo tiene los que le des aqui.
+	"tagOwners": {
+		"tag:barrera": ["group:admin-barrera"],
+	},
+
+	// Solo el miniPC etiquetado puede anunciar la red de la barrera.
+	// Cualquier otro que la anuncie necesitaria aprobacion manual.
+	"autoApprovers": {
+		"routes": {
+			"192.168.10.0/24": ["tag:barrera"],
+		},
+	},
+
+	// Todo lo que no aparezca aqui esta DENEGADO.
+	// No hay ningun grant con src = tag:barrera: si alguien compromete el
+	// miniPC, no puede iniciar conexiones hacia tu PC, tu movil ni nada del tailnet.
+	"grants": [
+		// miniPC: SSH (Tailscale SSH usa el 22) y ping.
+		{
+			"src": ["group:admin-barrera"],
+			"dst": ["tag:barrera"],
+			"ip":  ["tcp:22", "icmp:*"],
+		},
+		// Rele DT-R002: solo su web/API HTTP (el pulso de la barrera va por aqui).
+		{
+			"src": ["group:admin-barrera"],
+			"dst": ["192.168.10.10"],
+			"ip":  ["tcp:80", "icmp:*"],
+		},
+		// Camara LPR Milesight: web HTTP/HTTPS y video RTSP.
+		{
+			"src": ["group:admin-barrera"],
+			"dst": ["192.168.10.30"],
+			"ip":  ["tcp:80", "tcp:443", "tcp:554", "icmp:*"],
+		},
+		// Router UR32L: solo su web de administracion.
+		{
+			"src": ["group:admin-barrera"],
+			"dst": ["192.168.10.1"],
+			"ip":  ["tcp:80", "tcp:443", "icmp:*"],
+		},
+	],
+
+	// Tailscale SSH al miniPC: usuario normal (nunca root) y con
+	// reautenticacion en el navegador cada 12 horas.
+	"ssh": [
+		{
+			"action":      "check",
+			"src":         ["group:admin-barrera"],
+			"dst":         ["tag:barrera"],
+			"users":       ["user"],
+			"checkPeriod": "12h",
+		},
+	],
+
+	// Si alguno de estos tests falla, el editor NO deja guardar la politica.
+	"tests": [
+		{
+			"src":    "victoria@sgmas.es",
+			"proto":  "tcp",
+			"accept": [
+				"tag:barrera:22",
+				"192.168.10.10:80",
+				"192.168.10.30:443",
+				"192.168.10.30:554",
+				"192.168.10.1:443",
+			],
+			"deny": [
+				"tag:barrera:80",
+				"192.168.10.10:22",
+				"192.168.10.30:22",
+				"192.168.10.99:80",
+			],
+		},
+	],
+}

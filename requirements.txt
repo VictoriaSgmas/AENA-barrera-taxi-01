@@ -1,0 +1,5 @@
+flask
+requests
+paho-mqtt
+pyserial
+evdev; sys_platform == "linux"

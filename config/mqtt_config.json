@@ -1,0 +1,9 @@
+{
+  "host": "taxi.sgmas.es",
+  "port": 8883,
+  "tls": true,
+  "cafile": "config/mosquitto-ca.crt",
+  "usuario": "pi_aeropuerto",
+  "password": "PON_AQUI_LA_PASSWORD_MQTT",
+  "id_barrera": "AEROPUERTO_ACCESO_1"
+}
