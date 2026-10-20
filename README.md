@@ -33,7 +33,7 @@ especificación.
 | decision | `scripts/servicio_decision.py` | Único que compara contra la lista y dispara el relé para lecturas automáticas | BD, `reglas.py`, `rele_dt_r002.py` |
 | eventos | `scripts/servicio_eventos.py` | Único que habla POST `/eventos`; reintenta hasta 200/201 | BD, VPS |
 | mqtt-cliente | `scripts/servicio_mqtt_cliente.py` | Apertura/cierre remotos desde la app, publica estado | Broker MQTT del VPS, relé |
-| webhook-sgmas (opcional) | `scripts/servicio_webhook_sgmas.py` | Recibe aviso de cambio de lista, verifica firma, pide sync inmediata | HTTPS entrante, BD |
+| webhook-mqtt (opcional) | `scripts/servicio_webhook_sgmas.py` | Recibe aviso de cambio de lista, verifica firma, pide sync inmediata | HTTPS entrante, BD |
 
 Módulos compartidos (no son servicios, los importan los de arriba):
 
