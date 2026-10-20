@@ -1,4 +1,4 @@
-# Sistema de acceso de taxis — Raspberry Pi en 7 servicios independientes
+# Sistema de acceso de taxis — MiniPC en 7 servicios independientes
 
 Estado actual: el sistema ya no es un único proceso monolítico. Está
 partido en **7 servicios independientes** (uno por cada fila de la tabla
@@ -18,7 +18,7 @@ descartó a favor de una base SQLite compartida (`logs/barrera.db`) porque
 consigue lo mismo (servicios totalmente desacoplados, ninguno sabe que
 existen los demás) sin añadir una pieza más de infraestructura que
 instalar, asegurar y vigilar (un broker Mosquitto local) — algo que pesa
-especialmente mientras se prueba en un PC normal y no en la Raspberry Pi
+especialmente mientras se prueba en un PC normal y no en la MiniPC
 final. El MQTT "de verdad" (broker en la nube, para la apertura remota
 desde la app) sigue siendo su propio servicio aparte, tal cual pide la
 especificación.
@@ -494,4 +494,4 @@ SGbarrera/
 - Confirmar `mantener_abierto()`/`cerrar()` con un LED antes de usarlas en producción.
 - Lector UHF: el emparejamiento decimal↔EPC (ver "3. `lector-rfid`" arriba) está confirmado con 5 tags reales, pero convendría validarlo con más tags de la flota si es posible (por ahora asume que los últimos 4 bytes del EPC no se repiten entre tags, lo cual es muy probable pero no está 100% verificado a gran escala). Pendiente también pasar de alimentación USB de banco a 12V/2A + montaje definitivo.
 - Los datos pendientes de SGMAS para `mqtt-cliente` y `webhook-sgmas`.
-- Convertir cada servicio en su propia unidad systemd en la Raspberry Pi real.
+- Convertir cada servicio en su propia unidad systemd en la MiniPC real.
