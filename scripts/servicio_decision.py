@@ -30,6 +30,7 @@
 #   coche. Se mide desde el ULTIMO PULSO, no desde la ultima lectura, y un
 #   pulso que FALLO no cuenta: la siguiente lectura lo reintenta.
 
+import json
 import time
 import uuid
 from datetime import datetime, timedelta
@@ -41,10 +42,11 @@ from logger import registrar
 
 INTERVALO_SEGUNDOS = 0.5
 VENTANA_DEDUP_SEGUNDOS = 60
-VENTANA_PULSO_SEGUNDOS = 20
+VENTANA_PULSO_SEGUNDOS = 4
 
 _ultimas_lecturas = {}  # (origen, valor) -> datetime de la ultima vez procesada
 _ultimos_pulsos = {}  # (origen, valor) -> datetime del ultimo pulso al rele que SI llego
+_seq_pantalla = 0
 
 
 def _pulso_reciente(origen, valor, ahora):
@@ -73,6 +75,22 @@ def _es_lectura_repetida(origen, valor, ahora):
     anterior = _ultimas_lecturas.get(clave)
     _ultimas_lecturas[clave] = ahora
     return anterior is not None and (ahora - anterior).total_seconds() < VENTANA_DEDUP_SEGUNDOS
+
+
+def _avisar_pantalla(resultado, motivo):
+    # Lo que muestra el monitor junto a la barrera (servicio_pantalla.py).
+    # Si falla, la barrera tiene que seguir funcionando igual.
+    global _seq_pantalla
+    _seq_pantalla += 1
+    try:
+        almacen.set_estado("pantalla", json.dumps({
+            "seq": _seq_pantalla,
+            "ts": time.time(),
+            "resultado": resultado,
+            "motivo": motivo,
+        }))
+    except Exception as e:
+        print(f"[decision] no se pudo avisar a la pantalla: {e}")
 
 
 def procesar(id_lectura, timestamp, origen, valor):
@@ -108,16 +126,23 @@ def procesar(id_lectura, timestamp, origen, valor):
         registro = reglas.buscar_por_matricula(valor)
 
     repetida = _es_lectura_repetida(origen, valor, datetime.now())
+    etiqueta = f"{origen} {valor}{reglas.describir_registro(registro)}"
 
     resultado, motivo = reglas.evaluar(registro)
 
     respuesta_rele = ""
          # BORRAR LA LINEA DE ABAJO PARA DEJAR PASAR SOLO A LOS REGISTRADOS
-    resultado = "PERMITIDO"
+    #resultado = "PERMITIDO"
+
+    # Antes del rele y antes del return de las repetidas: la pantalla se
+    # refresca con cada lectura, tambien las repetidas, para que siga
+    # encendida mientras el coche este delante de la camara.
+    _avisar_pantalla(resultado, motivo)
+
     if resultado == "PERMITIDO":
         if _pulso_reciente(origen, valor, datetime.now()):
             respuesta_rele = f"OMITIDO (ya se pulso hace menos de {VENTANA_PULSO_SEGUNDOS}s)"
-            print(f"[decision] {origen} {valor} -> rele no pulsado, ya se pulso hace menos de {VENTANA_PULSO_SEGUNDOS}s")
+            print(f"[decision] {etiqueta} -> rele no pulsado, ya se pulso hace menos de {VENTANA_PULSO_SEGUNDOS}s")
         else:
             try:
                 respuesta_rele = rele_dt_r002.abrir_pulso()
@@ -129,7 +154,7 @@ def procesar(id_lectura, timestamp, origen, valor):
 
     if repetida:
         almacen.marcar_lectura_procesada(id_lectura)
-        print(f"[decision] {origen} {valor} -> {resultado} {motivo} | repetida (<{VENTANA_DEDUP_SEGUNDOS}s), sin log ni evento")
+        print(f"[decision] {etiqueta} -> {resultado} {motivo} | repetida (<{VENTANA_DEDUP_SEGUNDOS}s), sin log ni evento")
         return
 
     accion_log = registrar(origen, valor, resultado == "PERMITIDO", respuesta_rele)
@@ -149,7 +174,7 @@ def procesar(id_lectura, timestamp, origen, valor):
     almacen.set_estado("ultimo_evento", evento["fecha_hora"])
     almacen.marcar_lectura_procesada(id_lectura)
 
-    print(f"[decision] {origen} {valor} -> {resultado} {motivo} | {accion_log}")
+    print(f"[decision] {etiqueta} -> {resultado} {motivo} | {accion_log}")
 
 
 def main():

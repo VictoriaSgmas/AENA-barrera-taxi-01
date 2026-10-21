@@ -27,8 +27,9 @@ PREFIJO_EPC_PROPIO = "E2806894"
 # servicio_sync_autorizados.py en un PROCESO APARTE (de forma atomica, con
 # os.replace), asi que aqui no hay otra forma de "enterarse" del cambio.
 # Si hay varios registros con la misma matricula/rfid (huecos horarios
-# distintos, ver "PRECONTRATADO" en el propio JSON), gana el PRIMERO en el
-# orden del fichero -- igual que hacia antes el recorrido lineal.
+# distintos, ver "PRECONTRATADO" en el propio JSON), se guardan TODOS y
+# _elegir() decide cual aplica en este instante (el que esta activo y en
+# ventana; si ninguno, el primero en el orden del fichero).
 _cache = {"mtime": None, "lista": [], "por_matricula": {}, "por_rfid_completo": {}, "por_rfid_sufijo": {}}
 
 
@@ -45,13 +46,30 @@ def _indexar(lista):
     for registro in lista:
         matricula = registro.get("matricula")
         if matricula:
-            por_matricula.setdefault(normalizar_matricula(matricula), registro)
+            por_matricula.setdefault(normalizar_matricula(matricula), []).append(registro)
         rfid = registro.get("rfid")
         if rfid:
             rfid = rfid.strip().upper()
-            por_rfid_completo.setdefault(rfid, registro)
-            por_rfid_sufijo.setdefault(_ultimos_4_bytes_hex(rfid), registro)
+            por_rfid_completo.setdefault(rfid, []).append(registro)
+            por_rfid_sufijo.setdefault(_ultimos_4_bytes_hex(rfid), []).append(registro)
     return por_matricula, por_rfid_completo, por_rfid_sufijo
+
+
+def _elegir(candidatos):
+    """Entre los registros de una misma matricula/rfid, el que aplica ahora:
+    el primero activo y dentro de su ventana; si no hay ninguno, el primero
+    activo (para que evaluar() diga FUERA_HORARIO y no CADUCADO si hay
+    huecos de otro dia); y si tampoco, el primero del fichero. None si no
+    hay candidatos."""
+    if not candidatos:
+        return None
+    for r in candidatos:
+        if r.get("activo", False) and _en_ventana(r):
+            return r
+    for r in candidatos:
+        if r.get("activo", False):
+            return r
+    return candidatos[0]
 
 
 def _refrescar_cache():
@@ -88,7 +106,7 @@ def cargar_autorizados():
 
 def buscar_por_matricula(matricula):
     _refrescar_cache()
-    return _cache["por_matricula"].get(normalizar_matricula(matricula))
+    return _elegir(_cache["por_matricula"].get(normalizar_matricula(matricula)))
 
 
 def es_epc_completo(valor):
@@ -158,12 +176,12 @@ def buscar_por_rfid(decimal_leido):
     _refrescar_cache()
     if es_epc_completo(decimal_leido):
         epc = str(decimal_leido).strip().upper()
-        return _cache["por_rfid_completo"].get(epc)
+        return _elegir(_cache["por_rfid_completo"].get(epc))
 
     fingerprint = fingerprint_rfid(decimal_leido)
     if fingerprint is None:
         return None
-    return _cache["por_rfid_sufijo"].get(fingerprint)
+    return _elegir(_cache["por_rfid_sufijo"].get(fingerprint))
 
 
 def describir_rfid(decimal_leido):
@@ -195,6 +213,38 @@ def _en_ventana(registro):
     desde = datetime.fromisoformat(registro["valido_desde"].replace("Z", "+00:00"))
     hasta = datetime.fromisoformat(registro["valido_hasta"].replace("Z", "+00:00"))
     return desde <= ahora <= hasta
+
+
+def _licencia_corta(licencia_codigo):
+    """"LAS PALMAS DE GRAN CANARIA/111" -> "LPGC111"; "T-173" -> "T173";
+    "AGAETE/1" -> "AGAETE1". Prefijo = iniciales de las palabras (sin "DE"/"DEL")
+    si tiene varias, o la palabra entera si es una sola."""
+    prefijo, _, numero = licencia_codigo.strip().replace("-", "/").rpartition("/")
+    palabras = [w for w in prefijo.split() if w.upper() not in ("DE", "DEL")]
+    if len(palabras) > 1:
+        prefijo = "".join(w[0] for w in palabras)
+    return f"{prefijo.replace(' ', '')}{numero}".upper()
+
+
+def describir_registro(registro):
+    """Sufijo para el log de decision: " - <licencia> - <HH:MM,DD/MM>" a partir
+    del registro de /autorizados. La hora es el valido_desde en hora local de
+    la Pi (solo si el registro tiene un inicio real: los permanentes traen el
+    1900-01-01 de relleno y no llevan hora). Vacio si no hubo match.
+    """
+    if not registro:
+        return ""
+    partes = []
+    licencia = registro.get("licencia_codigo")
+    if licencia:
+        partes.append(_licencia_corta(licencia))
+    try:
+        desde = datetime.fromisoformat(registro["valido_desde"].replace("Z", "+00:00"))
+        if desde.year > 1900:
+            partes.append(desde.astimezone().strftime("%H:%M,%d/%m"))
+    except (KeyError, ValueError):
+        pass
+    return "".join(f" - {p}" for p in partes)
 
 
 def evaluar(registro):
